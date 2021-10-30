@@ -17,7 +17,7 @@ class CreateTableCategory extends Migration
             $table->integer('id')->autoIncrement();
             $table->string('name',100);
             $table->tinyInteger('status')->default(1);
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

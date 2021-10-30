@@ -22,7 +22,8 @@ class CreateTableUsers extends Migration
             $table->string('phone');
             $table->string('address')->nullable();
             $table->tinyInteger('status')->default(1);
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
+
             $table->timestamps();        
 
         });
