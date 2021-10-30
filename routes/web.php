@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,7 @@ Route::get('/', function () {
 
 
 Route::group(['prefix'=>'admin'],function(){
-    // Route::get('/',[AdminController::class, 'index'])->name('admin.index');
+    Route::get('/',[AdminController::class, 'index'])->name('admin.index');
     // Route::get('/login',[AdminController::class ,'login'])->name('admin.login');
     // Route::post('/login',[AdminController::class ,'check_login'])->name('admin.check-login');
     // Route::get('/register',[AdminController::class ,'register'])->name('admin.register');
