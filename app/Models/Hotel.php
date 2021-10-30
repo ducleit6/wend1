@@ -6,20 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Tour extends Model
+class Hotel extends Model
 {
-    use HasFactory,SoftDeletes;
-
-    protected $fillable = ['name','status','description', 'destination_id',	
-                           'category_id', 'price',	'sale_price', 'start_day', 
-                           'date', 'max_member', 'min_member', 'image'];
-    protected $date     = ['deleted_at'];
-    
-    public function  dess(){
-        return $this->hasOne(Destination::class,'id','destination_id');
-    }
-    public function  cats(){
-        return $this->hasOne(Category::class,'id','category_id');
+    use HasFactory, SoftDeletes;
+    protected $date = 'deleted_at';
+    protected $fillable = ['name',	'status',	'description',	'star'];
+    public function  dests(){
+        return $this->hasOne(Destination::class, 'destination_id','id');
     }
     public function scopeSearchFilter($query)
     {
