@@ -51,20 +51,20 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('restore-all',[CategoryController::class,'restoreAll'])->name('category.restoreAll');
         Route::post('forcedelete-all',[CategoryController::class,'forcedeleteAll'])->name('category.forcedeleteAll');
     });
-    // Route::group(['prefix'=>'destination'],function(){
-    //     Route::get('/',[DestinationController::class,'index'])->name('destination.index');
-    //     Route::get('/create',[DestinationController::class,'create'])->name('destination.create');
-    //     Route::post('/store',[DestinationController::class,'store'])->name('destination.store');
-    //     Route::get('/edit/{id}',[DestinationController::class,'edit'])->name('destination.edit');
-    //     Route::put('/update/{id}',[DestinationController::class,'update'])->name('destination.update');
-    //     Route::delete('/delete/{id}',[DestinationController::class,'delete'])->name('destination.delete');
-    //     Route::get('/trashed',[DestinationController::class,'trashed'])->name('destination.trashed');
-    //     Route::get('/restore/{id}',[DestinationController::class,'restore'])->name('destination.restore');
-    //     Route::get('/force-delete/{id}',[DestinationController::class,'forceDelete'])->name('destination.forceDelete');
-    //     Route::delete('delete-all',[DestinationController::class,'deleteAll'])->name('destination.deleteAll');
-    //     Route::post('restore-all',[DestinationController::class,'restoreAll'])->name('destination.restoreAll');
-    //     Route::post('forcedelete-all',[DestinationController::class,'forcedeleteAll'])->name('destination.forcedeleteAll');
-    // });
+    Route::group(['prefix'=>'destination'],function(){
+        Route::get('/',[DestinationController::class,'index'])->name('destination.index');
+        Route::get('/create',[DestinationController::class,'create'])->name('destination.create');
+        Route::post('/store',[DestinationController::class,'store'])->name('destination.store');
+        Route::get('/edit/{id}',[DestinationController::class,'edit'])->name('destination.edit');
+        Route::put('/update/{id}',[DestinationController::class,'update'])->name('destination.update');
+        Route::delete('/delete/{id}',[DestinationController::class,'delete'])->name('destination.delete');
+        Route::get('/trashed',[DestinationController::class,'trashed'])->name('destination.trashed');
+        Route::get('/restore/{id}',[DestinationController::class,'restore'])->name('destination.restore');
+        Route::get('/force-delete/{id}',[DestinationController::class,'forceDelete'])->name('destination.forceDelete');
+        Route::delete('delete-all',[DestinationController::class,'deleteAll'])->name('destination.deleteAll');
+        Route::post('restore-all',[DestinationController::class,'restoreAll'])->name('destination.restoreAll');
+        Route::post('forcedelete-all',[DestinationController::class,'forcedeleteAll'])->name('destination.forcedeleteAll');
+    });
     // Route::group(['prefix'=>'hotel'],function(){
     //     Route::get('/',[HotelController::class,'index'])->name('hotel.index');
     //     Route::get('/create',[HotelController::class,'create'])->name('hotel.create');
