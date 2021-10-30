@@ -27,7 +27,8 @@ class CreateTableTours extends Migration
             $table->integer('max_member');
             $table->integer('min_member');
             $table->string('image');
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
+
             $table->timestamps();
             $table->foreign('destination_id')->references('id')->on('destinations');
             $table->foreign('category_id')->references('id')->on('categories');

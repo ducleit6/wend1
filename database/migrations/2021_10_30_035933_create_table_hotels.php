@@ -19,7 +19,8 @@ class CreateTableHotels extends Migration
             $table->tinyInteger('status')->default(1);
             $table->string('description');
             $table->float('star')->nullable();
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }

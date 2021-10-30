@@ -18,7 +18,8 @@ class CreateTableDestinations extends Migration
             $table->string('name');
             $table->tinyInteger('status')->default(1);
             $table->text('description');
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }
