@@ -32,6 +32,9 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="{{route('category.index')}}" class="nav-link">Danh mục</a>
                 </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{route('destination.index')}}" class="nav-link">Điểm đến</a>
+                </li>
             </ul>
         </nav>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -80,7 +83,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item p-2">
+                                <li class="nav-item pl-2">
                                     <a href="" class="nav-link">
 
                                         <i class="fas fa-list-ul nav-icon"></i>
@@ -99,7 +102,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item p-2">
+                                <li class="nav-item pl-2">
                                     <a href="" class="nav-link">
 
                                         <i class="fas fa-list-ul nav-icon"></i>
@@ -117,13 +120,13 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item p-2">
+                                <li class="nav-item pl-2">
                                     <a href="{{route('category.index')}}" class="nav-link">
                                         <i class="fas fa-list-ul nav-icon"></i>
                                         <p>Danh sách</p>
                                     </a>
                                 </li>
-                                <li class="nav-item p-2">
+                                <li class="nav-item pl-2">
                                     <a href="{{route('category.trashed')}}" class="nav-link">
                                         <i class="fas fa-trash nav-icon"></i>
                                         <p>Thùng rác</p>
@@ -141,15 +144,15 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item p-2">
-                                    <a href="" class="nav-link">
+                                <li class="nav-item pl-2">
+                                    <a href="{{route('destination.index')}}" class="nav-link">
 
                                         <i class="fas fa-list-ul nav-icon"></i>
                                         <p>Danh sách</p>
                                     </a>
                                 </li>
-                                <li class="nav-item p-2">
-                                    <a href="" class="nav-link">
+                                <li class="nav-item pl-2">
+                                    <a href="{{route('destination.trashed')}}" class="nav-link">
                                         <i class="fas fa-trash nav-icon"></i>
                                         <p>Thùng rác</p>
                                     </a>
@@ -166,14 +169,14 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item p-2">
+                                <li class="nav-item pl-2">
                                     <a href="" class="nav-link">
 
                                         <i class="fas fa-list-ul nav-icon"></i>
                                         <p>Danh sách</p>
                                     </a>
                                 </li>
-                                <li class="nav-item p-2">
+                                <li class="nav-item pl-2">
                                     <a href="" class="nav-link">
                                         <i class="fas fa-trash nav-icon"></i>
                                         <p>Thùng rác</p>
@@ -201,7 +204,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item p-2">
+                                <li class="nav-item pl-2">
                                     <a href="" class="nav-link">
 
                                         <i class="fas fa-list-ul nav-icon"></i>
@@ -221,7 +224,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item p-2">
+                                <li class="nav-item pl-2">
                                     <a href="" class="nav-link">
 
                                         <i class="fas fa-list-ul nav-icon"></i>
@@ -241,7 +244,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item p-2">
+                                <li class="nav-item pl-2">
                                     <a href="" class="nav-link">
 
                                         <i class="fas fa-list-ul nav-icon"></i>
