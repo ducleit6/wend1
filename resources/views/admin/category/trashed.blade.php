@@ -1,6 +1,6 @@
 @extends('layout/admin')
 
-@section('title','Danh sách Danh mục')
+@section('title','Thùng rác Danh mục')
 @section('main')
 <div class="card">
     <div class="card-body">
@@ -27,16 +27,18 @@
 
             <button type="submit" class="btn btn-primary ml-1"><i class="fas fa-search mr-1"></i>Tìm kiếm</button>
             <div class="form-group ml-auto">
-                <button type="button" class="btn btn-danger btn-delete-all  mr-1"><i class="fas fa-trash mr-1"></i>Xóa
+                <a href="{{route('category.forcedeleteAll')}}" class="btn btn-danger btn-delete-all  mr-1"><i class="fas fa-trash mr-1"></i>Xóa
                     Lựa
-                    chọn</button>
-                <a href="{{route('category.create')}}" class="btn btn-primary ml-auto"><i
-                        class="far fa-plus-square mr-1"></i>Thêm mới</a>
+                    chọn</a>
+                    <a href="{{route('category.restoreAll')}}" class="btn btn-success btn-restore-all  mr-1"><i class="fas fa-window-restore mr-1"></i>Khôi phục
+                    Lựa
+                    chọn</a>
+                <a href="{{route('category.index')}}" class="btn btn-primary ml-auto"><i class="fas fa-arrow-circle-left mr-1"></i>Danh sách</a>
             </div>
         </form>
         <hr>
-        <form action="{{route('category.deleteAll')}}" method="POST" id="form-delete-all">
-            @csrf @method('DELETE')
+        <form action="" method="POST" id="form-delete-all">
+            @csrf 
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -79,10 +81,10 @@
                         </td>
                         <td>{{$data->created_at->format('M-d-Y')}}</td>
                         <td class="text-right">
-                            <a href="{{route('category.edit',$data->id)}}" class="btn btn-warning mr-1">
-                                <i class="fas fa-edit"></i>
+                            <a href="{{route('category.restore',$data->id)}}" class="btn btn-success mr-1">
+                            <i class="fas fa-window-restore"></i>
                             </a>
-                            <a href="{{route('category.delete',$data->id)}}"
+                            <a href="{{route('category.forceDelete',$data->id)}}"
                                 class="btn btn-danger btn-single-delete mr-1">
                                 <i class="fas fa-trash"></i>
                             </a>
@@ -102,8 +104,8 @@
         {{$datas->appends(request()->all())->links()}}
     </div>
 </div>
-<form action="" method="POST" id="singleDelete">
-    @csrf @method('DELETE')
+<form action="" method="GET" id="singleDelete">
+
 </form>
 
 
@@ -111,23 +113,28 @@
 @section('js')
 <script>
 $('form#singleDelete').hide();
-$('button.btn-delete-all').hide();
+$('a.btn-delete-all').hide();
+$('a.btn-restore-all').hide();
 $('input#checkAll').click(function() {
     var isCheck = $(this).is(':checked');
     if (isCheck) {
         $('input.check_item').prop('checked', true);
-        $('button.btn-delete-all').show();
+        $('a.btn-delete-all').show();
+        $('a.btn-restore-all').show();
     } else {
         $('input.check_item').prop('checked', false);
-        $('button.btn-delete-all').hide();
+        $('a.btn-delete-all').hide();
+        $('a.btn-restore-all').hide();
     }
 })
 $('input.check_item').click(function() {
     var isCheckLength = $('input.check_item:checked').length;
     if (isCheckLength > 0) {
-        $('button.btn-delete-all').show();
+        $('a.btn-delete-all').show();
+        $('a.btn-restore-all').show();
     } else {
-        $('button.btn-delete-all').hide();
+        $('a.btn-delete-all').hide();
+        $('a.btn-restore-all').hide();
     }
 })
 $('a.btn-single-delete').click(function(ev) {
@@ -138,7 +145,16 @@ $('a.btn-single-delete').click(function(ev) {
         $('form#singleDelete').submit();
     }
 })
-$('button.btn-delete-all').click(function() {
+$('a.btn-delete-all').click(function(ev) {
+    ev.preventDefault();
+    var href = $(this).attr('href');
+    $('form#form-delete-all').attr('action', href);
+    $('form#form-delete-all').submit();
+})
+$('a.btn-restore-all').click(function(ev) {
+    ev.preventDefault();
+    var href = $(this).attr('href');
+    $('form#form-delete-all').attr('action', href);
     $('form#form-delete-all').submit();
 })
 </script>
