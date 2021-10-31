@@ -17,7 +17,7 @@
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <div class="preloader flex-column justify-content-center align-items-center" style="height: 0px;">
-            <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60"
+            <img class="animation__shake" src="{{url('public/admin')}}/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60"
                 style="display: none;">
         </div>
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -43,15 +43,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <div class="sidebar" style="overflow-y: revert">
 
-                <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                    <img src="" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                    <a href="#" class="d-block"></a>
-                    <a href="">LogOut</a>
-                    </div>
-                </div> -->
+                
 
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
@@ -197,7 +189,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item pl-2">
-                                    <a href="" class="nav-link">
+                                    <a href="{{route('tour.index')}}" class="nav-link">
 
                                         <i class="fas fa-list-ul nav-icon"></i>
                                         <p>Danh sách</p>
