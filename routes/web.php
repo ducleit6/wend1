@@ -104,11 +104,11 @@ Route::group(['prefix'=>'admin'],function(){
     //     Route::delete('delete/{id}',[ServicesController::class, 'delete'])->name('services.delete');
     // });
 
-    // Route::group(['prefix' => 'blogs'], function(){
-    //     Route::get('/',[BlogsController::class, 'index'])->name('blogs.index');
-    //     Route::get('edit/{acc}',[BlogsController::class, 'editAdmin'])->name('blogs.editAdmin');
-    //     Route::put('update/{acc}',[BlogsController::class, 'updateAdmin'])->name('blogs.updateAdmin');
-    // });
+    Route::group(['prefix' => 'blogs'], function(){
+        Route::get('/',[BlogsController::class, 'index'])->name('blogs.index');
+        Route::get('edit/{acc}',[BlogsController::class, 'editAdmin'])->name('blogs.editAdmin');
+        Route::put('update/{acc}',[BlogsController::class, 'updateAdmin'])->name('blogs.updateAdmin');
+    });
 
     // Route::group(['prefix' => 'FAQs'], function(){
     //     Route::get('/',[FAQsController::class, 'index'])->name('FAQs.index');
