@@ -17,7 +17,7 @@ class CreateTableDestinations extends Migration
             $table->integer('id')->autoIncrement();
             $table->string('name');
             $table->tinyInteger('status')->default(1);
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->softDeletes();
 
             $table->timestamps();
