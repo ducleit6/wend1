@@ -1,6 +1,6 @@
 @extends('layout/admin')
 
-@section('title','Danh mục tạm xóac')
+@section('title','Danh sách Khách sạn')
 @section('main')
 <div class="card">
     <div class="card-body">
@@ -27,18 +27,16 @@
 
             <button type="submit" class="btn btn-primary ml-1"><i class="fas fa-search mr-1"></i>Tìm kiếm</button>
             <div class="form-group ml-auto">
-                <a href="{{route('category.forcedeleteAll')}}" class="btn btn-danger btn-delete-all  mr-1"><i class="fas fa-trash mr-1"></i>Xóa
+                <button type="button" class="btn btn-danger btn-delete-all  mr-1"><i class="fas fa-trash mr-1"></i>Xóa
                     Lựa
-                    chọn</a>
-                    <a href="{{route('category.restoreAll')}}" class="btn btn-success btn-restore-all  mr-1"><i class="fas fa-window-restore mr-1"></i>Khôi phục
-                    Lựa
-                    chọn</a>
-                <a href="{{route('category.index')}}" class="btn btn-primary ml-auto"><i class="fas fa-arrow-circle-left mr-1"></i>Danh sách</a>
+                    chọn</button>
+                <a href="{{route('hotel.create')}}" class="btn btn-primary ml-auto"><i
+                        class="far fa-plus-square mr-1"></i>Thêm mới</a>
             </div>
         </form>
         <hr>
-        <form action="" method="POST" id="form-delete-all">
-            @csrf 
+        <form action="{{route('hotel.deleteAll')}}" method="POST" id="form-delete-all">
+            @csrf @method('DELETE')
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -49,7 +47,9 @@
                             </div>
                         </th>
                         <th>ID</th>
-                        <th>Tên Thể Loại</th>
+                        <th>Tên Khách sạn</th>
+                        <th>Điểm đến</th>
+                        <th>Cấp độ sao</th>
                         <th>Trạng thái</th>
                         <th>Ngày tạo</th>
                         <th class="text-right">Hành động</th>
@@ -58,7 +58,7 @@
                 <tbody>
                     @if($datas->count() == 0)
                     <tr>
-                        <td colspan="6" class="text-center">Hiện tại chưa có danh mục nào</td>
+                        <td colspan="7" class="text-center">Hiện tại chưa có danh mục nào</td>
                     </tr>
                     @else
                     @foreach($datas as $data)
@@ -72,6 +72,8 @@
                         </td>
                         <td>{{$data->id}}</td>
                         <td>{{$data->name}}</td>
+                        <td>{{$data->dests->name}}</td>
+                        <td>{{$data->star}}</td>
                         <td>
                             @if($data->status == 0)
                             <span class="badge badge-danger">Private</span>
@@ -81,10 +83,10 @@
                         </td>
                         <td>{{$data->created_at->format('M-d-Y')}}</td>
                         <td class="text-right">
-                            <a href="{{route('category.restore',$data->id)}}" class="btn btn-success mr-1">
-                            <i class="fas fa-window-restore"></i>
+                            <a href="{{route('hotel.edit',$data->id)}}" class="btn btn-warning mr-1">
+                                <i class="fas fa-edit"></i>
                             </a>
-                            <a href="{{route('category.forceDelete',$data->id)}}"
+                            <a href="{{route('hotel.delete',$data->id)}}"
                                 class="btn btn-danger btn-single-delete mr-1">
                                 <i class="fas fa-trash"></i>
                             </a>
@@ -104,8 +106,8 @@
         {{$datas->appends(request()->all())->links()}}
     </div>
 </div>
-<form action="" method="GET" id="singleDelete">
-
+<form action="" method="POST" id="singleDelete">
+    @csrf @method('DELETE')
 </form>
 
 
@@ -113,28 +115,23 @@
 @section('js')
 <script>
 $('form#singleDelete').hide();
-$('a.btn-delete-all').hide();
-$('a.btn-restore-all').hide();
+$('button.btn-delete-all').hide();
 $('input#checkAll').click(function() {
     var isCheck = $(this).is(':checked');
     if (isCheck) {
         $('input.check_item').prop('checked', true);
-        $('a.btn-delete-all').show();
-        $('a.btn-restore-all').show();
+        $('button.btn-delete-all').show();
     } else {
         $('input.check_item').prop('checked', false);
-        $('a.btn-delete-all').hide();
-        $('a.btn-restore-all').hide();
+        $('button.btn-delete-all').hide();
     }
 })
 $('input.check_item').click(function() {
     var isCheckLength = $('input.check_item:checked').length;
     if (isCheckLength > 0) {
-        $('a.btn-delete-all').show();
-        $('a.btn-restore-all').show();
+        $('button.btn-delete-all').show();
     } else {
-        $('a.btn-delete-all').hide();
-        $('a.btn-restore-all').hide();
+        $('button.btn-delete-all').hide();
     }
 })
 $('a.btn-single-delete').click(function(ev) {
@@ -145,16 +142,7 @@ $('a.btn-single-delete').click(function(ev) {
         $('form#singleDelete').submit();
     }
 })
-$('a.btn-delete-all').click(function(ev) {
-    ev.preventDefault();
-    var href = $(this).attr('href');
-    $('form#form-delete-all').attr('action', href);
-    $('form#form-delete-all').submit();
-})
-$('a.btn-restore-all').click(function(ev) {
-    ev.preventDefault();
-    var href = $(this).attr('href');
-    $('form#form-delete-all').attr('action', href);
+$('button.btn-delete-all').click(function() {
     $('form#form-delete-all').submit();
 })
 </script>

@@ -35,6 +35,9 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="{{route('destination.index')}}" class="nav-link">Điểm đến</a>
                 </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{route('hotel.index')}}" class="nav-link">Khách sạn</a>
+                </li>
             </ul>
         </nav>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -153,6 +156,30 @@
                                 </li>
                                 <li class="nav-item pl-2">
                                     <a href="{{route('destination.trashed')}}" class="nav-link">
+                                        <i class="fas fa-trash nav-icon"></i>
+                                        <p>Thùng rác</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">                                
+                                <i class="nav-icon fas fa-hotel"></i>
+                                <p>
+                                    Quản Lý Khách sạn
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item pl-2">
+                                    <a href="{{route('hotel.index')}}" class="nav-link">
+
+                                        <i class="fas fa-list-ul nav-icon"></i>
+                                        <p>Danh sách</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item pl-2">
+                                    <a href="{{route('hotel.trashed')}}" class="nav-link">
                                         <i class="fas fa-trash nav-icon"></i>
                                         <p>Thùng rác</p>
                                     </a>

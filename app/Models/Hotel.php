@@ -10,9 +10,12 @@ class Hotel extends Model
 {
     use HasFactory, SoftDeletes;
     protected $date = 'deleted_at';
-    protected $fillable = ['name',	'status',	'description',	'star'];
+    protected $fillable = ['name',	'status','destination_id',	'description',	'star'];
     public function  dests(){
-        return $this->hasOne(Destination::class, 'destination_id','id');
+        return $this->hasOne(Destination::class, 'id','destination_id');
+    }
+    public function tours(){
+        return $this->hasMany(Tourhotel::class,'hotel_id','id');
     }
     public function scopeSearchFilter($query)
     {
