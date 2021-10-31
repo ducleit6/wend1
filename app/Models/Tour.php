@@ -21,6 +21,9 @@ class Tour extends Model
     public function  cats(){
         return $this->hasOne(Category::class,'id','category_id');
     }
+    public function hotels(){
+        return $this->hasMany(Tourhotel::class,'tour_id','id');
+    }
     public function scopeSearchFilter($query)
     {
         if(request()->key){

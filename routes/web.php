@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\TourController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,20 +82,21 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('restore-all',[HotelController::class,'restoreAll'])->name('hotel.restoreAll');
         Route::post('forcedelete-all',[HotelController::class,'forcedeleteAll'])->name('hotel.forcedeleteAll');
     });
-    // Route::group(['prefix'=>'tour'],function(){
-    //     Route::get('/',[TourController::class,'index'])->name('tour.index');
-    //     Route::get('/create',[TourController::class,'create'])->name('tour.create');
-    //     Route::post('/store',[TourController::class,'store'])->name('tour.store');
-    //     Route::get('/edit/{id}',[TourController::class,'edit'])->name('tour.edit');
-    //     Route::put('/update/{id}',[TourController::class,'update'])->name('tour.update');
-    //     Route::delete('/delete/{id}',[TourController::class,'delete'])->name('tour.delete');
-    //     Route::get('/trashed',[TourController::class,'trashed'])->name('tour.trashed');
-    //     Route::get('/restore/{id}',[TourController::class,'restore'])->name('tour.restore');
-    //     Route::get('/force-delete/{id}',[TourController::class,'forceDelete'])->name('tour.forceDelete');
-    //     Route::delete('delete-all',[TourController::class,'deleteAll'])->name('tour.deleteAll');
-    //     Route::post('restore-all',[TourController::class,'restoreAll'])->name('tour.restoreAll');
-    //     Route::post('forcedelete-all',[TourController::class,'forcedeleteAll'])->name('tour.forcedeleteAll');
-    // });
+    Route::group(['prefix'=>'tour'],function(){
+        Route::get('/',[TourController::class,'index'])->name('tour.index');
+        Route::get('/create',[TourController::class,'create'])->name('tour.create');
+        Route::post('/store',[TourController::class,'store'])->name('tour.store');
+        Route::get('/edit/{id}',[TourController::class,'edit'])->name('tour.edit');
+        Route::put('/update/{id}',[TourController::class,'update'])->name('tour.update');
+        Route::delete('/delete/{id}',[TourController::class,'delete'])->name('tour.delete');
+        Route::get('/trashed',[TourController::class,'trashed'])->name('tour.trashed');
+        Route::get('/restore/{id}',[TourController::class,'restore'])->name('tour.restore');
+        Route::get('/force-delete/{id}',[TourController::class,'forceDelete'])->name('tour.forceDelete');
+        Route::delete('delete-all',[TourController::class,'deleteAll'])->name('tour.deleteAll');
+        Route::post('restore-all',[TourController::class,'restoreAll'])->name('tour.restoreAll');
+        Route::post('forcedelete-all',[TourController::class,'forcedeleteAll'])->name('tour.forcedeleteAll');
+        Route::get('/getHotel',[TourController::class,'getHotel'])->name('tour.getHotel');
+    });
     // Route::group(['prefix' => 'services'], function(){
     //     Route::get('/',[ServicesController::class, 'index'])->name('services.index');
     //     Route::get('create.html',[ServicesController::class, 'create'])->name('services.create');
